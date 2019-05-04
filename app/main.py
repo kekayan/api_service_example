@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/codetostate")
 def getstate():
     code = request.args.get('code')
-    url="http://dataservicedep.default.svc.cluster.local/codes"
+    url="http://dataservice.default.svc.cluster.local/codes"
     response = requests.get(url)
     data = json.loads(response.text)
     result=data[code.upper()]
@@ -15,7 +15,7 @@ def getstate():
 @app.route("/statetocode")
 def getcode():
     state = request.args.get('state')
-    url="http://dataservicedep.default.svc.cluster.local/states"
+    url="http://dataservice.default.svc.cluster.local/states"
     response = requests.get(url)
     data = json.loads(response.text)
     print(data)
