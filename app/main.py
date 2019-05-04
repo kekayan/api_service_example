@@ -18,8 +18,8 @@ def getcode():
     url="http://dataservice.default.svc.cluster.local/states"
     response = requests.get(url)
     data = json.loads(response.text)
-    print(data)
-    return json.dumps(data[1])
+    result=data[state.lower()]
+    return json.dumps(result)
 
 @app.route("/")
 def welcome():
@@ -27,4 +27,3 @@ def welcome():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True,port=80)
-    # app.run(host='0.0.0.0', debug=True)
